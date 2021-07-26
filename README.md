@@ -15,7 +15,7 @@ Rundeck community example with OpenLDAP and Oracle as backend.
 ```sql
 create tablespace rundeck datafile 'rundeck.dat' size 10M autoextend on;
 alter session set "_ORACLE_SCRIPT"=true;
-create user rundeckuser identified by mypassowrd default tablespace rundeck;
+create user rundeckuser identified by mypassword default tablespace rundeck;
 grant create session to rundeckuser;
 grant create sequence to rundeckuser;
 grant create table to rundeckuser;
