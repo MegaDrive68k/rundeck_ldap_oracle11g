@@ -9,7 +9,7 @@ services:
         environment:
             RUNDECK_DATABASE_DRIVER: oracle.jdbc.driver.OracleDriver
             RUNDECK_DATABASE_USERNAME: rundeckuser
-            RUNDECK_DATABASE_PASSWORD: v4l3nt1n4
+            RUNDECK_DATABASE_PASSWORD: mypassword
             RUNDECK_DATABASE_URL: jdbc:oracle:thin:@oracle:1521:xe
             RUNDECK_DATABASE_DIALECT: org.rundeck.hibernate.RundeckOracleDialect
             RUNDECK_JAAS_MODULES_0: JettyCombinedLdapLoginModule
