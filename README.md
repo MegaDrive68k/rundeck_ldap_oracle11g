@@ -13,13 +13,8 @@ Rundeck community example with OpenLDAP and Oracle as backend.
 4) Under sqlplus execute the following commands:
 
 ```sql
-create tablespace rundeck datafile 'rundeck.dat' size 10M autoextend on;
-alter session set "_ORACLE_SCRIPT"=true;
-create user rundeckuser identified by mypassword default tablespace rundeck;
-grant create session to rundeckuser;
-grant create sequence to rundeckuser;
-grant create table to rundeckuser;
-grant unlimited tablespace to rundeckuser;
+create USER rundeck IDENTIFIED BY rundeck;
+GRANT CONNECT, RESOURCE, DBA TO rundeck;
 ```
 
 5) Exit Sqlplus with the `Ctrl+D` keys combination and exit the oracle/root session with the `exit` command.
