@@ -6,9 +6,6 @@ services:
           context: ./
           args:
             RUNDECK_IMAGE: rundeck/rundeck:SNAPSHOT
-        links:
-          - ldap
-          - oracle
         environment:
             RUNDECK_DATABASE_DRIVER: oracle.jdbc.driver.OracleDriver
             RUNDECK_DATABASE_USERNAME: rundeck
@@ -16,7 +13,7 @@ services:
             RUNDECK_DATABASE_URL: jdbc:oracle:thin:@oracle:1521:xe
             RUNDECK_DATABASE_DIALECT: org.rundeck.hibernate.RundeckOracleDialect
             RUNDECK_JAAS_MODULES_0: JettyCombinedLdapLoginModule
-            RUNDECK_JAAS_LDAP_PROVIDERURL: ldap://ldap:389
+            RUNDECK_JAAS_LDAP_PROVIDERURL: ldap://ldap:3333
             RUNDECK_JAAS_LDAP_BINDDN: cn=admin,dc=rdtest,dc=com
             RUNDECK_JAAS_LDAP_BINDPASSWORD: AdminPass123
             RUNDECK_JAAS_LDAP_USERBASEDN: ou=users,dc=rdtest,dc=com
@@ -27,15 +24,16 @@ services:
           - 4440:4440
     ldap:
         hostname: ldap
-        image: osixia/openldap:1.2.1 
+        image: osixia/openldap:1.5.0
         environment:
           - LDAP_ORGANISATION=RD Test
           - LDAP_DOMAIN=rdtest.com
           - LDAP_ADMIN_PASSWORD=AdminPass123
+          - LDAP_PORT=3333
         volumes:
           - ./ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom:rw
         ports:
-          - "389:389"
+          - "3333:3333"
         command: --copy-service
     oracle:
         image: oracleinanutshell/oracle-xe-11g:latest
