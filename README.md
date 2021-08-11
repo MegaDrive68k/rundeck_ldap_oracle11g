@@ -2,6 +2,8 @@
 
 Rundeck community example with OpenLDAP and Oracle as backend.
 
+![gh](https://user-images.githubusercontent.com/51376003/129082445-793fc6b4-905d-4401-823e-3c9355693707.jpg)
+
 ## Setup:
 
 1) Download the Oracle JDBC driver and place in lib/ .
